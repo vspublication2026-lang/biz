@@ -14,8 +14,9 @@ const STEPS = [
 ];
 
 /**
- * "How we work" — a pinned counter on the left while the five step-cards stack
- * up on the right, each one easing over the last as you scroll.
+ * "How we work" — the left column (heading, big outlined counter, progress dots)
+ * stays pinned while each scroll stacks the five step-cards on the right,
+ * every card easing over the previous one.
  */
 export default function HowWeWork() {
   const c = useSwap();
@@ -37,49 +38,59 @@ export default function HowWeWork() {
 
   return (
     <section id="how-we-work" data-testid="how-we-work-section" className="relative py-16 sm:py-24 overflow-clip">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
-        <Reveal className="mb-12 sm:mb-16">
-          <div className="mb-2">
-            <Sticker tone="paper" rotate="-rotate-2">
-              <ListChecks size={14} strokeWidth={2.5} /> Five steps
-            </Sticker>
-          </div>
-          <h2 className="mt-3 font-display font-extrabold tracking-tight text-3xl sm:text-5xl text-biz-ink">
-            <MaskedLine delay={0.05}>
-              <span>
-                How we <span className="text-sweep inline-block">work</span>
-              </span>
-            </MaskedLine>
-          </h2>
-          <p className="mt-4 max-w-xl text-base sm:text-lg text-biz-ink/60 font-medium">
-            Intelligence first. Then experiences, content and people — all pointed at an outcome.
-          </p>
-        </Reveal>
-
+      <div className="max-w-7xl mx-auto px-5 sm:px-8">
         <div className="grid lg:grid-cols-12 gap-10 lg:gap-14">
-          {/* pinned counter */}
-          <div className="hidden lg:block lg:col-span-4">
-            <div className="sticky top-32">
-              <div className="flex items-end gap-5">
-                <span className="font-display font-black leading-[0.85] text-[7rem] text-biz-ink/[0.12] select-none tabular-nums">
+          {/* left column — pinned while the cards scroll */}
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-28">
+              <Reveal>
+                <div className="mb-2">
+                  <Sticker tone="paper" rotate="-rotate-2">
+                    <ListChecks size={14} strokeWidth={2.5} /> Five steps
+                  </Sticker>
+                </div>
+                <h2 className="mt-3 font-display font-extrabold tracking-tight text-3xl sm:text-5xl text-biz-ink">
+                  <MaskedLine delay={0.05}>
+                    <span>
+                      How we{" "}
+                      <span className="inline-block" style={{ color: c("#6D28D9") }}>
+                        work
+                      </span>
+                    </span>
+                  </MaskedLine>
+                </h2>
+                <p className="mt-4 max-w-md text-base sm:text-lg text-biz-ink/60 font-medium">
+                  Intelligence first. Then experiences, content and people — all pointed at an outcome.
+                </p>
+              </Reveal>
+
+              {/* big outlined counter */}
+              <div className="hidden lg:flex items-center gap-6 mt-20">
+                <span
+                  data-testid="how-we-work-counter"
+                  className="font-display font-black leading-[0.85] text-[9.5rem] select-none tabular-nums transition-colors duration-300"
+                  style={{ color: c(STEPS[active].color), WebkitTextStroke: "3px #111111" }}
+                >
                   {STEPS[active].num}
                 </span>
-                <span className="font-display font-bold text-xl text-biz-ink pb-1">{STEPS[active].title}</span>
+                <span className="font-display font-bold text-xl text-biz-ink">{STEPS[active].title}</span>
               </div>
-              <div className="mt-7 flex items-center gap-2">
+              <div className="hidden lg:flex items-center gap-2.5 mt-9">
                 {STEPS.map((s, i) => (
                   <span
                     key={s.num}
-                    className={`h-2 rounded-full transition-all duration-300 ${i === active ? "w-9" : "w-2"}`}
-                    style={{ background: i === active ? c(s.color) : "rgba(17,17,17,0.14)" }}
+                    className={`rounded-full transition-all duration-300 ${
+                      i === active ? "h-3 w-11 border-2 border-biz-ink" : "h-3 w-3 border-2 border-biz-ink bg-transparent"
+                    }`}
+                    style={i === active ? { background: c(s.color) } : undefined}
                   />
                 ))}
               </div>
             </div>
           </div>
 
-          {/* stacking cards */}
-          <div className="lg:col-span-8">
+          {/* right column — stacking step cards */}
+          <div className="lg:col-span-7">
             {STEPS.map((s, i) => {
               const bg = c(s.color);
               return (
@@ -100,24 +111,28 @@ export default function HowWeWork() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-40px" }}
                     transition={{ duration: 0.7, ease: EASE }}
-                    className="relative h-[360px] sm:h-[380px] overflow-hidden rounded-[28px] border-2 border-biz-ink p-8 sm:p-11 text-biz-paper shadow-[8px_8px_0_0_#111111]"
+                    className="relative h-[440px] sm:h-[540px] overflow-hidden rounded-[30px] border-2 border-biz-ink p-8 sm:p-11 text-biz-paper shadow-[8px_8px_0_0_#111111]"
                     style={{ background: bg }}
                   >
+                    {/* decorative corner rings */}
+                    <span aria-hidden className="absolute -top-24 -right-24 h-80 w-80 rounded-full border-[30px] border-white/[0.13]" />
+                    <span aria-hidden className="absolute -top-10 -right-40 h-72 w-72 rounded-full border-[3px] border-white/[0.1]" />
+
                     <div className="flex items-start justify-between">
                       <span className="inline-block rounded-full border-2 border-biz-ink bg-biz-paper px-4 py-1.5 font-display text-[10px] font-black uppercase tracking-[0.18em] text-biz-ink shadow-[3px_3px_0_0_#111111]">
                         Step {s.num} / 05
                       </span>
-                      <span className="inline-flex h-11 w-11 items-center justify-center rounded-xl border-2 border-biz-ink bg-biz-paper text-biz-ink">
-                        <s.Icon size={19} strokeWidth={2.25} />
+                      <span className="inline-flex h-12 w-12 items-center justify-center rounded-2xl border-2 border-biz-ink bg-biz-paper text-biz-ink shadow-[4px_4px_0_0_#111111]">
+                        <s.Icon size={20} strokeWidth={2.25} />
                       </span>
                     </div>
                     <div className="absolute bottom-9 left-8 right-8 sm:left-11 sm:right-11">
-                      <h3 className="font-display font-black tracking-tight text-2xl sm:text-3xl">{s.title}</h3>
-                      <p className="mt-3 max-w-md text-sm sm:text-base leading-relaxed text-white/80">{s.desc}</p>
+                      <h3 className="font-display font-black tracking-tight text-2xl sm:text-[2rem]">{s.title}</h3>
+                      <p className="mt-3 max-w-md text-sm sm:text-base leading-relaxed text-white/85">{s.desc}</p>
                     </div>
                     <span
                       aria-hidden
-                      className="pointer-events-none absolute -bottom-14 right-4 font-display font-black leading-none text-[11rem] text-white/[0.08] select-none"
+                      className="pointer-events-none absolute -bottom-16 right-4 font-display font-black leading-none text-[13rem] text-white/[0.14] select-none"
                     >
                       {s.num}
                     </span>
