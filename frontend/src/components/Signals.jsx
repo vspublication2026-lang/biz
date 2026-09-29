@@ -6,7 +6,7 @@ import Reveal from "./Reveal";
 export default function Signals() {
   return (
     <section id="signals" className="relative bg-[#FAFAFB] py-24 overflow-hidden">
-      <div className="pointer-events-none absolute top-10 right-0 w-[400px] h-[400px] rounded-full bg-[#F62E8E]/[0.07] blur-[110px]" />
+      <div className="pointer-events-none absolute top-10 right-0 w-[400px] h-[400px] rounded-full bg-[#F62E8E]/[0.07] blur-[110px] anim-blob" />
 
       <div className="relative max-w-[1200px] mx-auto px-6">
         <Reveal>

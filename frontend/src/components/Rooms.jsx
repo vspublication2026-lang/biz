@@ -64,7 +64,7 @@ export default function Rooms() {
 
             <Reveal delay={420}>
               <div className="relative flex items-start gap-5 pt-2">
-                <span className="absolute -left-10 top-3 w-[19px] h-[19px] rounded-full bg-[#F62E8E] shadow-[0_0_24px_6px_rgba(246,46,142,0.55)] flex items-center justify-center">
+                <span className="absolute -left-10 top-3 w-[19px] h-[19px] rounded-full bg-[#F62E8E] shadow-[0_0_24px_6px_rgba(246,46,142,0.55)] flex items-center justify-center anim-pulse-dot">
                   <span className="w-[7px] h-[7px] rounded-full bg-white" />
                 </span>
                 <p className="font-display text-[22px] md:text-[28px] font-semibold text-white leading-snug">

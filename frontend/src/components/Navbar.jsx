@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { navMenus } from "../mock";
 
@@ -19,6 +19,20 @@ export const Logo = ({ dark = false }) => (
 
 export default function Navbar() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 10);
+      setHidden(y > 160 && y > lastY.current);
+      lastY.current = y;
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const scrollTo = (id) => {
     const el = document.getElementById(id);
@@ -27,7 +41,13 @@ export default function Navbar() {
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-white/85 backdrop-blur-md border-b border-black/5">
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-[transform,box-shadow,background-color,border-color] duration-300 ${
+        scrolled
+          ? "bg-white/95 backdrop-blur-md shadow-[0_12px_35px_-18px_rgba(0,0,0,0.25)] border-black/[0.08]"
+          : "bg-white/85 backdrop-blur-md border-black/5"
+      } ${hidden ? "-translate-y-full" : "translate-y-0"}`}
+    >
       <div className="max-w-[1200px] mx-auto px-6 h-[68px] flex items-center justify-between">
         <Logo />
 

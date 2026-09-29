@@ -24,8 +24,8 @@ export default function Belief() {
 
   return (
     <section ref={sectionRef} className="relative bg-[#FAFAFB] py-28 overflow-hidden">
-      <div className="pointer-events-none absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#F62E8E]/[0.09] blur-[120px]" />
-      <div className="pointer-events-none absolute bottom-0 left-0 w-[380px] h-[380px] rounded-full bg-[#7C5CFC]/[0.07] blur-[110px]" />
+      <div className="pointer-events-none absolute top-1/3 -right-32 w-[480px] h-[480px] rounded-full bg-[#F62E8E]/[0.09] blur-[120px] anim-blob-slow" />
+      <div className="pointer-events-none absolute bottom-0 left-0 w-[380px] h-[380px] rounded-full bg-[#7C5CFC]/[0.07] blur-[110px] anim-blob" />
 
       <div className="relative max-w-[1200px] mx-auto px-6">
         <h2 className="font-display font-extrabold text-[34px] md:text-[46px] tracking-tight text-[#111113]">

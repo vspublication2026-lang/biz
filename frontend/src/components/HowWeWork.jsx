@@ -86,7 +86,12 @@ export default function HowWeWork() {
                   key={s.num}
                   ref={(el) => (cardRefs.current[i] = el)}
                   className="sticky mb-6"
-                  style={{ top: `${96 + i * 14}px` }}
+                  style={{
+                    top: `${96 + i * 14}px`,
+                    transform: active > i ? `scale(${1 - (active - i) * 0.03})` : "scale(1)",
+                    transformOrigin: "top center",
+                    transition: "transform 0.45s cubic-bezier(0.22, 1, 0.36, 1)",
+                  }}
                 >
                   <div
                     className="relative rounded-[28px] p-9 md:p-11 h-[380px] overflow-hidden text-white shadow-[0_24px_60px_-20px_rgba(0,0,0,0.35)]"

@@ -1,17 +1,26 @@
-import React from "react";
+import React, { useState } from "react";
 import { ArrowRight, ArrowDown } from "lucide-react";
 import { heroTags, heroCards, EMAIL } from "../mock";
 import Reveal from "./Reveal";
 
 export default function Hero() {
+  const [parallax, setParallax] = useState({ x: 0, y: 0 });
+
   const scrollTo = (id) => document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
+  const handleMouseMove = (e) => {
+    setParallax({
+      x: (e.clientX / window.innerWidth - 0.5) * 18,
+      y: (e.clientY / window.innerHeight - 0.5) * 14,
+    });
+  };
+
   return (
-    <section id="top" className="relative overflow-hidden bg-[#FAFAFB] pt-[120px] pb-16">
+    <section id="top" onMouseMove={handleMouseMove} className="relative overflow-hidden bg-[#FAFAFB] pt-[120px] pb-16">
       {/* pastel washes */}
-      <div className="pointer-events-none absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-[#F62E8E]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute top-40 left-1/3 w-[460px] h-[460px] rounded-full bg-[#7C5CFC]/10 blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-32 -left-20 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/10 blur-[120px]" />
+      <div className="pointer-events-none absolute -top-32 -left-32 w-[520px] h-[520px] rounded-full bg-[#F62E8E]/10 blur-[120px] anim-blob" />
+      <div className="pointer-events-none absolute top-40 left-1/3 w-[460px] h-[460px] rounded-full bg-[#7C5CFC]/10 blur-[120px] anim-blob-slow" />
+      <div className="pointer-events-none absolute -bottom-32 -left-20 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/10 blur-[120px] anim-blob" style={{ animationDuration: "18s" }} />
 
       <div className="relative max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-14 items-center">
         {/* Left */}
@@ -24,7 +33,7 @@ export default function Hero() {
           </Reveal>
 
           <Reveal delay={100}>
-            <h1 className="font-display font-extrabold text-[72px] md:text-[96px] leading-none tracking-tight mt-6 bg-gradient-to-r from-[#F62E8E] via-[#C04DF0] to-[#7C5CFC] bg-clip-text text-transparent">
+            <h1 className="font-display font-extrabold text-[72px] md:text-[96px] leading-none tracking-tight mt-6 bg-gradient-to-r from-[#F62E8E] via-[#C04DF0] to-[#7C5CFC] bg-clip-text text-transparent anim-gradient-text">
               BIZORA
             </h1>
           </Reveal>
@@ -87,8 +96,11 @@ export default function Hero() {
 
         {/* Right cards */}
         <Reveal delay={200} className="hidden md:block">
-          <div className="grid grid-cols-2 gap-5">
-            <div className="row-span-2 bg-[#111113] rounded-[28px] p-6 min-h-[430px] hover:-translate-y-1.5 transition-transform duration-300">
+          <div
+            className="grid grid-cols-2 gap-5 transition-transform duration-300 ease-out will-change-transform"
+            style={{ transform: `translate(${parallax.x}px, ${parallax.y}px)` }}
+          >
+            <div className="row-span-2 bg-[#111113] rounded-[28px] p-6 min-h-[430px] anim-float">
               <span
                 className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] font-bold tracking-[0.12em] text-white"
                 style={{ backgroundColor: heroCards[0].color }}
@@ -100,7 +112,7 @@ export default function Hero() {
             {heroCards.slice(1).map((card) => (
               <div
                 key={card.label}
-                className="bg-[#111113] rounded-[28px] p-6 min-h-[205px] hover:-translate-y-1.5 transition-transform duration-300"
+                className="bg-[#111113] rounded-[28px] p-6 min-h-[205px] anim-float-delay"
               >
                 <span
                   className="inline-flex items-center gap-2 rounded-full px-3.5 py-1.5 text-[10px] font-bold tracking-[0.12em] text-white"

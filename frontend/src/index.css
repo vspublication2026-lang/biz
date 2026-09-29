@@ -147,3 +147,77 @@ body {
     background: #f62e8e;
     color: #ffffff;
 }
+
+
+/* Motion effects */
+@keyframes blobDrift {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+    33% {
+        transform: translate(40px, -30px) scale(1.08);
+    }
+    66% {
+        transform: translate(-30px, 25px) scale(0.95);
+    }
+    100% {
+        transform: translate(0, 0) scale(1);
+    }
+}
+
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes floatY {
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-12px);
+    }
+}
+
+@keyframes pulseDot {
+    0%,
+    100% {
+        box-shadow: 0 0 0 0 rgba(246, 46, 142, 0.55);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(246, 46, 142, 0);
+    }
+}
+
+.anim-blob {
+    animation: blobDrift 14s ease-in-out infinite;
+}
+
+.anim-blob-slow {
+    animation: blobDrift 20s ease-in-out infinite reverse;
+}
+
+.anim-gradient-text {
+    background-size: 200% auto;
+    animation: gradientShift 6s ease-in-out infinite;
+}
+
+.anim-float {
+    animation: floatY 5s ease-in-out infinite;
+}
+
+.anim-float-delay {
+    animation: floatY 6s ease-in-out 1.2s infinite;
+}
+
+.anim-pulse-dot {
+    animation: pulseDot 2.2s ease-out infinite;
+}

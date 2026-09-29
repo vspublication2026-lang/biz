@@ -6,9 +6,9 @@ import Reveal from "./Reveal";
 export default function CTA() {
   return (
     <section id="contact" className="relative bg-[#FAFAFB] py-32 overflow-hidden">
-      <div className="pointer-events-none absolute -top-24 left-0 w-[480px] h-[480px] rounded-full bg-[#7C5CFC]/[0.12] blur-[120px]" />
-      <div className="pointer-events-none absolute top-10 right-0 w-[480px] h-[480px] rounded-full bg-[#F62E8E]/[0.12] blur-[120px]" />
-      <div className="pointer-events-none absolute -bottom-32 left-1/3 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/[0.1] blur-[120px]" />
+      <div className="pointer-events-none absolute -top-24 left-0 w-[480px] h-[480px] rounded-full bg-[#7C5CFC]/[0.12] blur-[120px] anim-blob" />
+      <div className="pointer-events-none absolute top-10 right-0 w-[480px] h-[480px] rounded-full bg-[#F62E8E]/[0.12] blur-[120px] anim-blob-slow" />
+      <div className="pointer-events-none absolute -bottom-32 left-1/3 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/[0.1] blur-[120px] anim-blob" style={{ animationDuration: "17s" }} />
 
       <div className="relative max-w-[1200px] mx-auto px-6 flex flex-col items-center text-center">
         <Reveal>

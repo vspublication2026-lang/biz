@@ -6,8 +6,8 @@ import Reveal from "./Reveal";
 export default function WhatWeBuild() {
   return (
     <section id="build" className="relative bg-[#FAFAFB] py-24 overflow-hidden">
-      <div className="pointer-events-none absolute -top-20 -left-24 w-[460px] h-[460px] rounded-full bg-[#F62E8E]/[0.08] blur-[110px]" />
-      <div className="pointer-events-none absolute bottom-0 left-1/4 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/[0.08] blur-[110px]" />
+      <div className="pointer-events-none absolute -top-20 -left-24 w-[460px] h-[460px] rounded-full bg-[#F62E8E]/[0.08] blur-[110px] anim-blob" />
+      <div className="pointer-events-none absolute bottom-0 left-1/4 w-[420px] h-[420px] rounded-full bg-[#4A7BF7]/[0.08] blur-[110px] anim-blob-slow" />
 
       <div className="relative max-w-[1200px] mx-auto px-6">
         <div className="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-10">
