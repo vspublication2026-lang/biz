@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Users, Radar, DoorOpen, ArrowUpRight, Activity } from "lucide-react";
 import Sticker from "@/components/Sticker";
 import Note from "@/components/Note";
-import { usePalette } from "@/components/Palette";
+import { usePalette, useSwap } from "@/components/Palette";
 import { EASE, Reveal, MaskedLine } from "@/components/Reveal";
 // Tilt only from `sm` up — a rotated full-width card clips its corners on phones.
 const useCanTilt = () => {
@@ -62,8 +62,14 @@ const SignalCard = ({ s, index }) => {
       animate={{ rotate: canTilt ? s.tilt : 0 }}
       whileHover={{ rotate: 0, y: -10 }}
       transition={{ duration: 0.45, ease: EASE }}
-      className="group relative h-full overflow-hidden rounded-[28px] bg-white p-7 sm:p-8 lg:p-9 shadow-[0_24px_60px_-30px_rgba(17,17,17,0.35)] ring-1 ring-biz-ink/[0.06] cursor-default"
+      className="group relative h-full min-h-[440px] overflow-hidden rounded-[32px] bg-white p-8 sm:p-9 lg:p-10 shadow-[0_24px_60px_-30px_rgba(17,17,17,0.35)] ring-1 ring-biz-ink/[0.06] cursor-default"
     >
+      {/* soft pastel wash across the top of the card */}
+      <div
+        aria-hidden
+        className="absolute inset-x-0 top-0 h-[62%] pointer-events-none"
+        style={{ background: `radial-gradient(95% 100% at 50% 0%, ${s.color}24, transparent 72%)` }}
+      />
       {/* colour wash that swells on hover */}
       <div
         aria-hidden
@@ -73,7 +79,7 @@ const SignalCard = ({ s, index }) => {
       {/* ghost number */}
       <span
         aria-hidden
-        className="absolute -bottom-5 -right-1 font-display font-black leading-none text-[6.5rem] select-none text-biz-ink/[0.05] transition-transform duration-700 ease-out group-hover:-translate-y-3"
+        className="absolute -bottom-7 -right-1 font-display font-black leading-none text-[8rem] select-none text-biz-ink/[0.06] transition-transform duration-700 ease-out group-hover:-translate-y-3"
       >
         0{index + 1}
       </span>
@@ -91,7 +97,7 @@ const SignalCard = ({ s, index }) => {
               />
             ))}
             <span
-              className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl text-white shadow-lg transition-transform duration-500 ease-out group-hover:rotate-[-8deg] group-hover:scale-110"
+              className="relative inline-flex h-14 w-14 items-center justify-center rounded-2xl text-white shadow-lg transition-transform duration-500 ease-out group-hover:rotate-[-8deg] group-hover:scale-110"
               style={{ background: s.color, boxShadow: `0 14px 30px -12px ${s.color}` }}
             >
               <motion.span
@@ -99,7 +105,7 @@ const SignalCard = ({ s, index }) => {
                 transition={{ duration: 3.2, repeat: Infinity, ease: "easeInOut", delay: index * 0.4 }}
                 className="inline-flex"
               >
-                <Icon size={22} strokeWidth={2.25} />
+                <Icon size={24} strokeWidth={2.25} />
               </motion.span>
             </span>
           </span>
@@ -108,7 +114,7 @@ const SignalCard = ({ s, index }) => {
           </span>
         </div>
         <h3
-          className="mt-10 sm:mt-12 font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95] text-[1.75rem] sm:text-[clamp(1.15rem,2.1vw,2rem)] flex flex-wrap gap-x-[0.25em]"
+          className="mt-12 sm:mt-14 font-display font-extrabold uppercase tracking-[-0.03em] leading-[0.95] text-[2rem] sm:text-[clamp(1.4rem,2.4vw,2.3rem)] flex flex-wrap gap-x-[0.25em]"
           style={{ color: s.color }}
           aria-label={s.word}
         >
@@ -132,7 +138,7 @@ const SignalCard = ({ s, index }) => {
           })}
         </h3>
         <p className="mt-4 text-lg sm:text-xl font-medium text-biz-ink/75">{s.line}</p>
-        <div className="mt-auto pt-8 flex items-center gap-3 text-sm font-semibold text-biz-ink/50 transition-colors duration-300 group-hover:text-biz-ink">
+        <div className="mt-auto pt-10 flex items-center gap-3 text-sm font-semibold text-biz-ink/50 transition-colors duration-300 group-hover:text-biz-ink">
           <span className="relative h-px flex-1 overflow-hidden bg-biz-ink/10">
             <span
               className="absolute inset-y-0 left-0 w-0 transition-all duration-700 ease-out group-hover:w-full"
@@ -157,10 +163,15 @@ const Everywhere = () => (
 );
 export default function ThreeSignals() {
   const palette = usePalette();
+  const c = useSwap();
   const signals = SIGNALS.map((sig, i) => ({ ...sig, color: palette.signals[i] ?? sig.color }));
   return (
     <section id="signals" data-testid="three-signals-section" className="relative py-16 sm:py-24 overflow-hidden">
-      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+      {/* ambient pastel washes */}
+      <div aria-hidden className="pointer-events-none absolute -top-24 -left-32 w-[520px] h-[520px] rounded-full blur-[130px]" style={{ background: `${c("#D81B74")}1f` }} />
+      <div aria-hidden className="pointer-events-none absolute top-1/3 -right-32 w-[520px] h-[520px] rounded-full blur-[130px]" style={{ background: `${c("#6D28D9")}1a` }} />
+
+      <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
         <Reveal className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
           <div>
             <div className="mb-2">
