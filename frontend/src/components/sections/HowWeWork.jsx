@@ -111,7 +111,7 @@ export default function HowWeWork() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: false, margin: "-40px" }}
                     transition={{ duration: 0.7, ease: EASE }}
-                    className="relative h-[440px] sm:h-[540px] overflow-hidden rounded-[30px] border-2 border-biz-ink p-8 sm:p-11 text-biz-paper shadow-[8px_8px_0_0_#111111]"
+                    className="relative h-[375px] sm:h-[460px] overflow-hidden rounded-[30px] border-2 border-biz-ink p-8 sm:p-11 text-biz-paper shadow-[8px_8px_0_0_#111111]"
                     style={{ background: bg }}
                   >
                     {/* decorative corner rings */}
