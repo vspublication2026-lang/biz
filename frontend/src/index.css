@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@500;600;700&family=Inter:wght@400;500;600&family=Sora:wght@400;500;600;700;800&display=swap');
+@import url('https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@400,500,700,800,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -122,16 +123,8 @@ html {
 }
 
 body {
-    font-family: 'Inter', sans-serif;
-    background-color: #fafafb;
-}
-
-.font-logo {
-    font-family: 'Comfortaa', sans-serif;
-}
-
-.font-display {
-    font-family: 'Sora', sans-serif;
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: #fafafa;
 }
 
 @keyframes scrollLine {
@@ -146,6 +139,44 @@ body {
 ::selection {
     background: #f62e8e;
     color: #ffffff;
+}
+
+/* gradient text that keeps sweeping (used on key words like BIZORA, "everywhere.") */
+.text-sweep {
+    background: linear-gradient(90deg, #6d28d9, #d81b74, #8b5cf6, #ff3e8e, #6d28d9);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: sweep 7s linear infinite;
+}
+
+@keyframes sweep {
+    to {
+        background-position: 300% center;
+    }
+}
+
+/* morphing colour orb used by the Parallax depth layer and Ripple */
+.blob {
+    border-radius: 42% 58% 63% 37% / 45% 42% 58% 55%;
+    animation: blobMorph 14s ease-in-out infinite;
+}
+
+@keyframes blobMorph {
+    0%,
+    100% {
+        border-radius: 42% 58% 63% 37% / 45% 42% 58% 55%;
+        transform: rotate(0deg) scale(1);
+    }
+    33% {
+        border-radius: 58% 42% 37% 63% / 55% 58% 42% 45%;
+        transform: rotate(8deg) scale(1.06);
+    }
+    66% {
+        border-radius: 45% 55% 58% 42% / 37% 45% 55% 63%;
+        transform: rotate(-6deg) scale(0.97);
+    }
 }
 
 

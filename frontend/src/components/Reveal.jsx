@@ -1,34 +1,30 @@
-import React, { useEffect, useRef, useState } from "react";
-
-export default function Reveal({ children, delay = 0, className = "" }) {
+import { useRef } from "react";
+import { motion, useInView } from "framer-motion";
+export const EASE = [0.4, 0, 0.2, 1];
+export const Reveal = ({ children, delay = 0, y = 32, className = "" }) => (
+  <motion.div
+    className={className}
+    initial={{ opacity: 0, y }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: false, margin: "-70px" }}
+    transition={{ duration: 0.7, ease: EASE, delay }}
+  >
+    {children}
+  </motion.div>
+);
+export const MaskedLine = ({ children, delay = 0, className = "", innerClassName = "" }) => {
   const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setVisible(true);
-          obs.disconnect();
-        }
-      },
-      { threshold: 0.12 }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, []);
-
+  const inView = useInView(ref, { once: false, margin: "-10% 0px -10% 0px" });
   return (
-    <div
-      ref={ref}
-      className={`${className} transition-[opacity,transform] duration-700 ease-out ${
-        visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {children}
+    <div ref={ref} className={`overflow-hidden ${className}`}>
+      <motion.div
+        initial={{ y: 90 }}
+        animate={inView ? { y: 0 } : { y: 90 }}
+        transition={{ duration: 0.8, ease: EASE, delay }}
+        className={innerClassName}
+      >
+        {children}
+      </motion.div>
     </div>
   );
-}
+};

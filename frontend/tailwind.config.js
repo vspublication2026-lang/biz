@@ -9,12 +9,49 @@ module.exports = {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        display: ['"Cabinet Grotesk"', 'sans-serif'],
+        body: ['"Plus Jakarta Sans"', 'sans-serif'],
+      },
       borderRadius: {
         lg: 'var(--radius)',
         md: 'calc(var(--radius) - 2px)',
         sm: 'calc(var(--radius) - 4px)'
       },
       colors: {
+        // ——— Site palette: PINK · PURPLE · GRAY ———
+        // pinks
+        'biz-pink': '#FF3E8E',
+        'biz-magenta': '#D81B74',
+        'biz-rose': '#FF6FA5',
+        'biz-blush': '#FFE1EF',
+        // purples
+        'biz-purple': '#8B5CF6',
+        'biz-violet': '#6D28D9',
+        'biz-lilac': '#C4B5FD',
+        'biz-lavender': '#EAE4FF',
+        // supporting blue (cards)
+        'biz-azure': '#71A6D2',
+        'biz-ice': '#DCEAF5',
+        'biz-mistblue': '#C7DDEE',
+        'biz-steel': '#5C86B6',
+        'biz-teal': '#629BB6',
+        // greys
+        'biz-ink': '#111111',
+        'biz-charcoal': '#2A2A2A',
+        'biz-slate': '#6B7280',
+        'biz-grey': '#A7A9AB',
+        'biz-silver': '#D1D3D8',
+        'biz-stone': '#ECECEA',
+        'biz-mist': '#F1F1F3',
+        'biz-paper': '#FAFAFA',
+        // legacy names kept so existing classes keep working, remapped to the new palette
+        'biz-blue': '#6D28D9',
+        'biz-orange': '#D81B74',
+        'biz-yellow': '#FFC2DC',
+        'biz-green': '#A7A9AB',
+        'biz-red': '#D81B74',
+        'biz-coral': '#FF6FA5',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
