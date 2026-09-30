@@ -160,6 +160,7 @@ body {
 /* morphing colour orb used by the Parallax depth layer and Ripple */
 .blob {
     border-radius: 42% 58% 63% 37% / 45% 42% 58% 55%;
+    filter: blur(70px);
     animation: blobMorph 14s ease-in-out infinite;
 }
 

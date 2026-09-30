@@ -167,9 +167,13 @@ export default function ThreeSignals() {
   const signals = SIGNALS.map((sig, i) => ({ ...sig, color: palette.signals[i] ?? sig.color }));
   return (
     <section id="signals" data-testid="three-signals-section" className="relative py-16 sm:py-24 overflow-hidden">
-      {/* ambient pastel washes */}
-      <div aria-hidden className="pointer-events-none absolute -top-24 -left-32 w-[520px] h-[520px] rounded-full blur-[130px]" style={{ background: `${c("#D81B74")}1f` }} />
-      <div aria-hidden className="pointer-events-none absolute top-1/3 -right-32 w-[520px] h-[520px] rounded-full blur-[130px]" style={{ background: `${c("#6D28D9")}1a` }} />
+      {/* ambient morphing colour orbs — same depth layer language as Parallax */}
+      <div aria-hidden className="pointer-events-none absolute -left-[12%] top-[10%] w-[46vw] h-[46vw] max-w-[640px] max-h-[640px]">
+        <div className="blob w-full h-full" style={{ background: c("#FF3E8E"), opacity: 0.16 }} />
+      </div>
+      <div aria-hidden className="pointer-events-none absolute -right-[14%] bottom-[5%] w-[40vw] h-[40vw] max-w-[560px] max-h-[560px]">
+        <div className="blob w-full h-full" style={{ background: c("#6D28D9"), opacity: 0.14, animationDelay: "-7s" }} />
+      </div>
 
       <div className="relative max-w-7xl mx-auto px-5 sm:px-8">
         <Reveal className="mb-12 sm:mb-16 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
