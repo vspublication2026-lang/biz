@@ -143,40 +143,42 @@ body {
 
 /* gradient text that keeps sweeping (used on key words like BIZORA, "everywhere.") */
 .text-sweep {
-    background: linear-gradient(90deg, #6d28d9, #d81b74, #8b5cf6, #ff3e8e, #6d28d9);
-    background-size: 300% auto;
+    background-image: linear-gradient(90deg, #6d28d9, #d81b74, #ff3e8e, #8b5cf6, #6d28d9);
+    background-size: 300% 100%;
+    background-position: 0 50%;
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    animation: sweep 7s linear infinite;
+    animation: textSweep 6s linear infinite;
+    margin-bottom: -0.14em;
+    padding-bottom: 0.14em;
 }
 
-@keyframes sweep {
+@keyframes textSweep {
     to {
-        background-position: 300% center;
+        background-position: 300% 50%;
     }
 }
 
 /* morphing colour orb used by the Parallax depth layer and Ripple */
 .blob {
-    border-radius: 42% 58% 63% 37% / 45% 42% 58% 55%;
-    filter: blur(70px);
-    animation: blobMorph 14s ease-in-out infinite;
+    pointer-events: none;
+    position: absolute;
+    border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%;
+    filter: blur(64px);
+    will-change: transform, border-radius;
+    animation: morph 16s ease-in-out infinite alternate;
 }
 
-@keyframes blobMorph {
-    0%,
+@keyframes morph {
+    0% {
+        border-radius: 42% 58% 61% 39% / 45% 42% 58% 55%;
+    }
+    50% {
+        border-radius: 56% 44% 38% 62% / 52% 60% 40% 48%;
+    }
     100% {
-        border-radius: 42% 58% 63% 37% / 45% 42% 58% 55%;
-        transform: rotate(0deg) scale(1);
-    }
-    33% {
-        border-radius: 58% 42% 37% 63% / 55% 58% 42% 45%;
-        transform: rotate(8deg) scale(1.06);
-    }
-    66% {
-        border-radius: 45% 55% 58% 42% / 37% 45% 55% 63%;
-        transform: rotate(-6deg) scale(0.97);
+        border-radius: 44% 56% 62% 38% / 60% 44% 56% 40%;
     }
 }
 
