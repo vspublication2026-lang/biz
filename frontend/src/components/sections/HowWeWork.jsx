@@ -7,10 +7,10 @@ import { useSwap } from "@/components/Palette";
 
 const STEPS = [
   { num: "01", title: "Know first.", desc: "We start with intelligence — original research, real data and a clear understanding of the landscape.", Icon: Search, color: "#012362" },
-  { num: "02", title: "Make it matter.", desc: "We create experiences people don't just attend, but want to be part of.", Icon: Sparkles, color: "#D81B74" },
-  { num: "03", title: "Make it travel.", desc: "We turn ideas into content that moves across audiences, platforms and conversations.", Icon: Send, color: "#8B5CF6" },
-  { num: "04", title: "Bring the right people in.", desc: "We curate the people, perspectives and platforms that make a conversation worth having.", Icon: Users, color: "#5C86B6" },
-  { num: "05", title: "Take it somewhere.", desc: "Every conversation should lead somewhere — a decision, a direction, a partnership or an opportunity.", Icon: Compass, color: "#111111" },
+  { num: "02", title: "Make it matter.", desc: "We create experiences people don't just attend, but want to be part of.", Icon: Sparkles, color: "#fc3ea0" },
+  { num: "03", title: "Make it travel.", desc: "We turn ideas into content that moves across audiences, platforms and conversations.", Icon: Send, color: "#9273fc" },
+  { num: "04", title: "Bring the right people in.", desc: "We curate the people, perspectives and platforms that make a conversation worth having.", Icon: Users, color: "#5286fc" },
+  { num: "05", title: "Take it somewhere.", desc: "Every conversation should lead somewhere — a decision, a direction, a partnership or an opportunity.", Icon: Compass, color: "#9273fc" },
 ];
 
 /**
