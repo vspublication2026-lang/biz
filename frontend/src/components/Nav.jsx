@@ -89,6 +89,13 @@ export default function Nav() {
               </div>
             ))}
             <Link
+              to="/events/autodesk-construction-connect-mumbai"
+              data-testid="nav-events"
+              className="text-[15px] font-medium text-biz-ink/80 hover:text-biz-ink transition-colors duration-300"
+            >
+              Events
+            </Link>
+            <Link
               to="/contact-us"
               data-testid="nav-contact"
               className="rounded-full bg-biz-ink text-biz-paper px-5 py-2.5 text-sm font-semibold hover:bg-biz-blue transition-colors duration-300"
@@ -146,6 +153,14 @@ export default function Nav() {
                 transition={{ duration: 0.5, ease: EASE, delay: 0.4 }}
                 className="pt-6 flex flex-col gap-4"
               >
+                <Link
+                  to="/events/autodesk-construction-connect-mumbai"
+                  data-testid="mobile-nav-events"
+                  onClick={() => setOpen(false)}
+                  className="text-left font-display font-bold text-3xl sm:text-4xl text-biz-ink"
+                >
+                  Events
+                </Link>
                 <Link
                   to="/contact-us"
                   data-testid="mobile-nav-contact"

@@ -6,6 +6,7 @@ import Nav from "@/components/Nav";
 import Version1 from "@/components/Version1";
 import ContactUs from "@/pages/ContactUs";
 import LegalPage from "@/pages/LegalPage";
+import EventMicrosite from "@/pages/EventMicrosite";
 
 // reset scroll (through Lenis when it is running) on every route change
 const ScrollManager = () => {
@@ -42,6 +43,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Version1 />} />
           <Route path="/contact-us" element={<ContactUs />} />
+          <Route path="/events/autodesk-construction-connect-mumbai" element={<EventMicrosite />} />
           <Route path="/privacy-policy" element={<LegalPage title="Privacy Policy" />} />
           <Route path="/cookie-policy" element={<LegalPage title="Cookie Policy" />} />
           <Route path="/terms-and-conditions" element={<LegalPage title="Terms & Conditions" />} />
