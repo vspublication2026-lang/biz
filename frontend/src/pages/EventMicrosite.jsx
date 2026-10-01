@@ -454,15 +454,19 @@ export default function EventMicrosite() {
       <section className="py-14 sm:py-20">
         <div className="max-w-5xl mx-auto px-5 sm:px-8">
           <div className="rounded-[30px] border-2 border-biz-ink bg-white p-10 sm:p-14 shadow-[10px_10px_0_0_#111111] text-center">
-            <div className="grid sm:grid-cols-2 gap-10 sm:gap-0 sm:divide-x-2 divide-biz-ink/10">
-              <div className="sm:px-8">
+            <div className="grid sm:grid-cols-2 gap-12 sm:gap-0 sm:divide-x-2 divide-biz-ink/10">
+              <div className="sm:px-8 flex flex-col items-center">
                 <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-biz-ink/40">Presented by</p>
-                <p className="mt-4 font-display font-black text-3xl sm:text-4xl text-biz-ink">Autodesk</p>
+                <img src="/assets/autodesk-platinum.png" alt="Autodesk Platinum Partner" className="mt-6 h-14 sm:h-16 w-auto object-contain" />
               </div>
-              <div className="sm:px-8">
-                <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-biz-ink/40">Brought to you by</p>
-                <p className="mt-4 font-display font-black text-3xl sm:text-4xl text-sweep inline-block">Bizora</p>
+              <div className="sm:px-8 flex flex-col items-center">
+                <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-biz-ink/40">In association with</p>
+                <img src="/assets/fast-company-india.png" alt="Fast Company India" className="mt-6 h-10 sm:h-12 w-auto object-contain" />
               </div>
+            </div>
+            <div className="mt-12 pt-10 border-t border-biz-ink/10">
+              <p className="font-display text-xs font-black uppercase tracking-[0.2em] text-biz-ink/40">Brought to you by</p>
+              <p className="mt-4 font-display font-black text-3xl sm:text-4xl text-sweep inline-block">Bizora</p>
             </div>
           </div>
 
